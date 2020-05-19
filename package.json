@@ -5,10 +5,13 @@
   "dependencies": {
     "create-react-app": "^3.4.1",
     "lerna": "^3.21.0",
-    "prettier": "^2.0.5"
+    "prettier": "^2.0.5",
+    "serve": "^11.3.0"
   },
   "scripts": {
     "build:components": "lerna exec npm run build --scope=@goodreads-v2/component-library",
+    "storybook": "lerna exec npm run storybook --scope=@goodreads-v2/component-library",
+    "build-storybook": "lerna exec npm run build-storybook --scope=@goodreads-v2/component-library",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
