@@ -8,6 +8,7 @@
     "prettier": "^2.0.5"
   },
   "scripts": {
+    "build:components": "lerna exec npm run build --scope=@goodreads-v2/component-library",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
