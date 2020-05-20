@@ -8,7 +8,7 @@
   "author": "Artur Daschevici <a.daschevici@gmail.com>",
   "homepage": "https://github.com/adaschevici/goodreads-v2/tree/master/packages/component-library#readme",
   "license": "MIT",
-  "main": "lib/components.bundle.js",
+  "main": "lib/component.bundle.js",
   "directories": {
     "lib": "lib",
     "test": "__tests__"
@@ -25,7 +25,6 @@
   },
   "scripts": {
     "build": "rollup -c",
-    "test": "echo \"Error: run tests from root\" && exit 1",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },

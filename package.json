@@ -12,6 +12,7 @@
     "build:components": "lerna exec npm run build --scope=@goodreads-v2/component-library",
     "storybook": "lerna exec npm run storybook --scope=@goodreads-v2/component-library",
     "build-storybook": "lerna exec npm run build-storybook --scope=@goodreads-v2/component-library",
+    "start:goodreads": "lerna exec npm start --scope=@goodreads-v2/goodreads",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
