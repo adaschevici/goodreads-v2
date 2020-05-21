@@ -4,8 +4,8 @@ import theme from '../theme'
 
 const { artifika } = theme.textStyles
 
-export default ({ children }) => (
+export default props => (
   <DynamicComponent {...artifika} {...props}>
-    {children}
+    {props.children}
   </DynamicComponent>
 )
