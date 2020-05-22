@@ -5,7 +5,7 @@ import { decorate } from '@storybook/addon-actions'
 import faker from 'faker'
 import BookGrid from '.'
 
-const bookProgress = decorate([(args) => args.slice(0, 2)])
+const bookProgress = decorate([args => args.slice(0, 2)])
 
 const books = (howMany = 10) => {
   let books = []
