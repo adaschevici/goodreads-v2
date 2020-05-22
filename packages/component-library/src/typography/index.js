@@ -1,3 +1,5 @@
-import { Artifika } from './artifika'
+import Artifika from './artifika'
 
-export { Artifika }
+export const typography = {
+  Artifika,
+}

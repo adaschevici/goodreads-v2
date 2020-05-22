@@ -1,3 +1,4 @@
+// http://chir.ag/projects/name-that-color/
 export default {
   bostonBlue: '#428bca',
   stTropaz: '#2a6496',

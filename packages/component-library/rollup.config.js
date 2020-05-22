@@ -1,9 +1,7 @@
-// node-resolve will resolve all the node dependencies
 import resolve from '@rollup/plugin-node-resolve'
-import commonjs from '@rollup/plugin-commonjs'
 import babel from 'rollup-plugin-babel'
-import copy from 'rollup-plugin-copy'
 import { terser } from 'rollup-plugin-terser'
+import copy from 'rollup-plugin-copy'
 import bundleSize from 'rollup-plugin-bundle-size'
 
 export default {
@@ -16,21 +14,20 @@ export default {
   external: [
     'react',
     'react-dom',
+    'react-router-dom',
     'prop-types',
     'styled-components',
     'styled-system',
+    'rebass',
+    '@rebass/layout',
+    '@rebass/forms',
     './Artifika-Regular.woff',
     './Artifika-Regular.woff2',
   ],
   plugins: [
     resolve(),
     babel({
-      exclude: 'node_modules/**',
-    }),
-    commonjs({
-      namedExports: {
-        'react-is': ['typeOf', 'isElement', 'isValidElementType'],
-      },
+      exclude: ['node_modules/**', '*.woff*'],
     }),
     copy({
       targets: [

@@ -14,7 +14,7 @@ addParameters({
   },
 })
 
-addDecorator(storyFn => (
+addDecorator((storyFn) => (
   <ThemeProvider theme={theme}>
     <GlobalFonts />
     {storyFn()}
