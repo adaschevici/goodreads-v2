@@ -1,0 +1,23 @@
+export const FETCH_META_REQUEST = 'FETCH_META_REQUEST'
+export const FETCH_META_SUCCEEDED = 'FETCH_META_SUCCEEDED'
+export const FETCH_META_FAILED = 'FETCH_META_FAILED'
+
+export const FETCH_IMAGES_REQUEST = 'FETCH_IMAGES_REQUEST'
+export const FETCH_IMAGES_SUCCEEDED = 'FETCH_IMAGES_SUCCEEDED'
+export const FETCH_IMAGES_FAILED = 'FETCH_IMAGES_FAILED'
+
+export const FETCH_RATING_REQUEST = 'FETCH_RATING_REQUEST'
+export const FETCH_RATING_SUCCEEDED = 'FETCH_RATING_SUCCEEDED'
+export const FETCH_RATING_FAILED = 'FETCH_RATING_FAILED'
+
+export const fetchMeta = () => ({
+  type: FETCH_META_REQUEST,
+})
+
+export const fetchImages = () => ({
+  type: FETCH_IMAGES_REQUEST,
+})
+
+export const fetchRatings = () => ({
+  type: FETCH_RATING_REQUEST,
+})

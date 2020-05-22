@@ -55,10 +55,17 @@
     "rollup-plugin-bundle-size": "^1.0.3",
     "rollup-plugin-copy": "^3.3.0",
     "rollup-plugin-terser": "^5.3.0",
-    "storybook-react-router": "^1.0.8"
+    "storybook-react-router": "^1.0.8",
+    "jest": "^25.5.4"
   },
   "dependencies": {
-    "beauty-stars": "^1.1.0",
-    "jest": "^25.5.4"
+    "beauty-stars": "^1.1.0"
+  },
+  "peerDependencies": {
+    "@rebass/forms": "^4.0.6",
+    "@rebass/layout": "^4.0.6",
+    "rebass": "^4.0.7",
+    "styled-components": "^5.1.0",
+    "styled-system": "^5.1.5"
   }
 }
