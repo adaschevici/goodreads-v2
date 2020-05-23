@@ -17,7 +17,15 @@ const actions = [
   },
 ]
 
-export default ({ image, title, description, rating, onStarted, bookId }) => (
+export default ({
+  image,
+  title,
+  description,
+  rating,
+  onStarted,
+  bookId,
+  authenticated,
+}) => (
   <Box width={1}>
     <Card
       sx={{
@@ -29,23 +37,25 @@ export default ({ image, title, description, rating, onStarted, bookId }) => (
       <Image src={image} />
       <Box p={2}>
         <BeautyStars value={rating} />
-        <Box pt={3}>
-          <Select
-            id="book-action"
-            name="book-action"
-            defaultValue="Not reading..."
-            onChange={(evt) => onStarted(bookId, evt.target.value)}
-            sx={{
-              borderRadius: 5,
-            }}
-          >
-            {Object.entries(actions).map(([_, action]) => (
-              <option key={action.key} value={action.key}>
-                {action.name}
-              </option>
-            ))}
-          </Select>
-        </Box>
+        {authenticated && (
+          <Box pt={3}>
+            <Select
+              id="book-action"
+              name="book-action"
+              defaultValue="Not reading..."
+              onChange={evt => onStarted(bookId, evt.target.value)}
+              sx={{
+                borderRadius: 5,
+              }}
+            >
+              {Object.entries(actions).map(([_, action]) => (
+                <option key={action.key} value={action.key}>
+                  {action.name}
+                </option>
+              ))}
+            </Select>
+          </Box>
+        )}
         <Artifika tag="h3">{title}</Artifika>
         <Body fontSize={0}>{description}</Body>
       </Box>

@@ -5,7 +5,7 @@ import { typography } from '../../typography'
 
 const { Artifika } = typography
 
-export default () => (
+export default ({ authenticated, username }) => (
   <Flex px={2} color="white" bg="black" alignItems="center">
     <Link to="/">
       <Artifika p={2} fontWeight="bold">
@@ -13,10 +13,18 @@ export default () => (
       </Artifika>
     </Link>
     <Box mx="auto" />
-    <Link to="/login">
-      <Artifika p={2} fontWeight="bold">
-        Login
-      </Artifika>
-    </Link>
+    {authenticated ? (
+      <Link to="#">
+        <Artifika p={2} fontWeight="bold">
+          {`Welcome, ${username}`}
+        </Artifika>
+      </Link>
+    ) : (
+      <Link to="/login">
+        <Artifika p={2} fontWeight="bold">
+          Login
+        </Artifika>
+      </Link>
+    )}
   </Flex>
 )

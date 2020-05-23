@@ -1,7 +1,7 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 import { decorate } from '@storybook/addon-actions'
-import { withKnobs } from '@storybook/addon-knobs'
+import { withKnobs, boolean } from '@storybook/addon-knobs'
 import BookCard from '.'
 
 const bookProgress = decorate([args => args.slice(0, 2)])
@@ -18,6 +18,7 @@ storiesOf('Components|Elements.BookCard', module)
         title={'harry potter'}
         bookId="9781566199094"
         onStarted={bookProgress.action('book-progress')}
+        authenticated={boolean('Authenticated', false)}
       />
     )
   })
