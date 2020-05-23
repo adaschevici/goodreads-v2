@@ -33,6 +33,9 @@ class BookList extends Component {
 
   componentDidMount = () => {
     const { dispatch } = this.props
+    dispatch(fetchMeta())
+    dispatch(fetchRatings())
+    dispatch(fetchImages())
   }
 
   render() {

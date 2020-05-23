@@ -5,6 +5,9 @@ import {
   FETCH_IMAGES_REQUEST,
   FETCH_IMAGES_SUCCEEDED,
   FETCH_IMAGES_FAILED,
+  FETCH_RATINGS_REQUEST,
+  FETCH_RATINGS_SUCCEEDED,
+  FETCH_RATINGS_FAILED,
 } from './actions'
 
 const initialState = {
@@ -49,6 +52,26 @@ export default function books(state = initialState, action) {
       }
     }
     case FETCH_IMAGES_FAILED: {
+      return {
+        ...state,
+        isLoading: false,
+        error: action.payload.error,
+      }
+    }
+    case FETCH_RATINGS_REQUEST: {
+      return {
+        ...state,
+        isLoading: true,
+      }
+    }
+    case FETCH_RATINGS_SUCCEEDED: {
+      return {
+        ...state,
+        images: action.payload.images,
+        isLoading: false,
+      }
+    }
+    case FETCH_RATINGS_FAILED: {
       return {
         ...state,
         isLoading: false,

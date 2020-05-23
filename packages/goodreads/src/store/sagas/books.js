@@ -5,8 +5,8 @@ import {
   FETCH_META_FAILED,
   FETCH_IMAGES_SUCCEEDED,
   FETCH_IMAGES_FAILED,
-  FETCH_RATING_SUCCEEDED,
-  FETCH_RATING_FAILED,
+  FETCH_RATINGS_SUCCEEDED,
+  FETCH_RATINGS_FAILED,
 } from '../../components/book-list/actions'
 
 export const watchBookMeta = function* watchFetchMeta() {
@@ -43,12 +43,12 @@ export const watchBookRatings = function* watchFetchRatings() {
   try {
     const { data } = yield call(api.fetchRating)
     yield put({
-      type: FETCH_RATING_SUCCEEDED,
+      type: FETCH_RATINGS_SUCCEEDED,
       payload: { ratings: data },
     })
   } catch (e) {
     yield put({
-      type: FETCH_RATING_FAILED,
+      type: FETCH_RATINGS_FAILED,
       payload: { error: e.message },
     })
   }
