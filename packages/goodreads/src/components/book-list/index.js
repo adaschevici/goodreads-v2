@@ -39,18 +39,16 @@ class BookList extends Component {
   }
 
   render() {
-    const { meta, rating, images } = this.props
+    const { meta, isLoadingMeta } = this.props
     console.log(meta)
-    console.log(rating)
-    console.log(images)
-    console.log(books())
+    console.log(isLoadingMeta)
     return <BookGrid books={books()} />
   }
 }
 
 function mapStateToProps(state) {
-  const { meta, isLoading, error } = state.books.meta
-  return { meta, isLoading, error }
+  const { meta, isLoadingMeta, errorMeta } = state.books
+  return { meta, isLoadingMeta, errorMeta }
 }
 
 export default connect(mapStateToProps)(BookList)

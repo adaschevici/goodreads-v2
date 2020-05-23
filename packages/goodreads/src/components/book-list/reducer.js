@@ -12,8 +12,14 @@ import {
 
 const initialState = {
   meta: [],
-  isLoading: false,
-  error: null,
+  ratings: [],
+  images: [],
+  isLoadingMeta: false,
+  isLoadingRatings: false,
+  isLoadingImages: false,
+  errorMeta: null,
+  errorRatings: null,
+  errorImages: null,
 }
 
 export default function books(state = initialState, action) {
@@ -21,61 +27,61 @@ export default function books(state = initialState, action) {
     case FETCH_META_REQUEST: {
       return {
         ...state,
-        isLoading: true,
+        isLoadingMeta: true,
       }
     }
     case FETCH_META_SUCCEEDED: {
       return {
         ...state,
         meta: action.payload.meta,
-        isLoading: false,
+        isLoadingMeta: false,
       }
     }
     case FETCH_META_FAILED: {
       return {
         ...state,
-        isLoading: false,
-        error: action.payload.error,
+        isLoadingMeta: false,
+        errorMeta: action.payload.error,
       }
     }
     case FETCH_IMAGES_REQUEST: {
       return {
         ...state,
-        isLoading: true,
+        isLoadingImages: true,
       }
     }
     case FETCH_IMAGES_SUCCEEDED: {
       return {
         ...state,
         images: action.payload.images,
-        isLoading: false,
+        isLoadingImages: false,
       }
     }
     case FETCH_IMAGES_FAILED: {
       return {
         ...state,
-        isLoading: false,
-        error: action.payload.error,
+        isLoadingImages: false,
+        errorImages: action.payload.error,
       }
     }
     case FETCH_RATINGS_REQUEST: {
       return {
         ...state,
-        isLoading: true,
+        isLoadingRatings: true,
       }
     }
     case FETCH_RATINGS_SUCCEEDED: {
       return {
         ...state,
-        images: action.payload.images,
-        isLoading: false,
+        ratings: action.payload.ratings,
+        isLoadingRatings: false,
       }
     }
     case FETCH_RATINGS_FAILED: {
       return {
         ...state,
-        isLoading: false,
-        error: action.payload.error,
+        isLoadingRatings: false,
+        errorRatings: action.payload.error,
       }
     }
     default: {
