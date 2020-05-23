@@ -51,9 +51,32 @@ class BookList extends Component {
 }
 
 function mapStateToProps(state) {
-  const { meta, images, ratings } = state.books
-  const authenticated = false
-  return { meta, images, ratings, authenticated }
+  const {
+    meta,
+    ratings,
+    images,
+    isLoadingImages,
+    isLoadingRatings,
+    isLoadingMeta,
+    errorRatings,
+    errorMeta,
+    errorImages,
+  } = state.books
+  const { username, error: authError } = state.auth
+  const authenticated = authError === null
+  return {
+    meta,
+    ratings,
+    images,
+    isLoadingImages,
+    isLoadingRatings,
+    isLoadingMeta,
+    errorRatings,
+    errorImages,
+    errorMeta,
+    username,
+    authenticated,
+  }
 }
 
 export default connect(mapStateToProps)(BookList)

@@ -8,6 +8,10 @@ class AuthCheck extends Component {
     return dispatch(checkAuth())
   }
 
+  componentDidUpdate() {
+    const { dispatch } = this.props
+    dispatch(checkAuth())
+  }
   render() {
     const { children } = this.props
     return children
