@@ -1,7 +1,8 @@
 import React, { Component, Fragment } from 'react'
-import { fetchBooks } from './actions'
+import { fetchBooks, fetchBooksInProgress } from './actions'
 import { connect } from 'react-redux'
 import { components, typography } from '@goodreads-v2/component-library'
+import { getBooks, getBooksProgress } from './selectors'
 
 const { BookGrid, BookCard } = components
 const { Artifika, Body } = typography
@@ -10,21 +11,26 @@ class BookList extends Component {
   static defaultProps = {
     images: [],
     ratings: [],
+    booksInProgress: [],
   }
 
+  componentDidUpdate = (prevProps) => {
+    const { username: prevUsername } = prevProps
+    const { dispatch, username } = this.props
+    if (prevUsername !== username) {
+      dispatch(fetchBooksInProgress(username))
+    }
+  }
   componentDidMount = () => {
-    const { dispatch } = this.props
+    const { dispatch, authenticated, username } = this.props
     dispatch(fetchBooks())
+    if (authenticated) {
+      dispatch(fetchBooksInProgress(username))
+    }
   }
 
   render() {
-    const { meta, images, ratings, authenticated } = this.props
-    const books = meta.map((bookMeta, idx) => ({
-      ...bookMeta,
-      ...images[idx],
-      ...ratings[idx],
-    }))
-    const booksInProgress = []
+    const { books, booksInProgress, authenticated } = this.props
     return (
       <Fragment>
         {authenticated && (
@@ -64,9 +70,6 @@ class BookList extends Component {
 
 function mapStateToProps(state) {
   const {
-    meta,
-    ratings,
-    images,
     isLoadingImages,
     isLoadingRatings,
     isLoadingMeta,
@@ -76,10 +79,10 @@ function mapStateToProps(state) {
   } = state.books
   const { username, error: authError } = state.auth
   const authenticated = authError === null
+  const books = getBooks(state)
+  const booksInProgress = getBooksProgress(state)
   return {
-    meta,
-    ratings,
-    images,
+    books,
     isLoadingImages,
     isLoadingRatings,
     isLoadingMeta,
@@ -88,6 +91,7 @@ function mapStateToProps(state) {
     errorMeta,
     username,
     authenticated,
+    booksInProgress,
   }
 }
 

@@ -29,3 +29,7 @@ export function authenticateUser({ email, password }) {
 export function checkToken() {
   return client.post('/auth/check-token')
 }
+
+export function fetchBooksInProgress({ username }) {
+  return client.get(`/book-progress/${username}`)
+}
