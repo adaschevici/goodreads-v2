@@ -1,10 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import {
-  fetchMeta,
-  fetchImages,
-  fetchRatings,
-  fetchBooksInProgress,
-} from './actions'
+import { fetchBooks } from './actions'
 import { connect } from 'react-redux'
 import { components, typography } from '@goodreads-v2/component-library'
 
@@ -18,11 +13,8 @@ class BookList extends Component {
   }
 
   componentDidMount = () => {
-    const { dispatch, username } = this.props
-    dispatch(fetchMeta())
-    dispatch(fetchRatings())
-    dispatch(fetchImages())
-    dispatch(fetchBooksInProgress(username))
+    const { dispatch } = this.props
+    dispatch(fetchBooks())
   }
 
   render() {
