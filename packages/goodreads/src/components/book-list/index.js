@@ -1,5 +1,4 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+import React, { Component, Fragment } from 'react'
 import {
   fetchMeta,
   fetchImages,
@@ -7,18 +6,15 @@ import {
   fetchBooksInProgress,
 } from './actions'
 import { connect } from 'react-redux'
-import { components } from '@goodreads-v2/component-library'
+import { components, typography } from '@goodreads-v2/component-library'
 
 const { BookGrid, BookCard } = components
+const { Artifika, Body } = typography
 
 class BookList extends Component {
   static defaultProps = {
-    fetchMeta: () => {},
     images: [],
     ratings: [],
-  }
-  static propTypes = {
-    fetchMeta: PropTypes.func.isRequired,
   }
 
   componentDidMount = () => {
@@ -36,16 +32,40 @@ class BookList extends Component {
       ...images[idx],
       ...ratings[idx],
     }))
+    const booksInProgress = []
     return (
-      <BookGrid>
-        {books.map((book) => (
-          <BookCard
-            key={`${book.id}${book.title}`}
-            authenticated={authenticated}
-            {...book}
-          />
-        ))}
-      </BookGrid>
+      <Fragment>
+        {authenticated && (
+          <Fragment>
+            <Artifika>Currently reading</Artifika>
+            {booksInProgress.length ? (
+              <BookGrid>
+                {booksInProgress.map((book) => (
+                  <BookCard
+                    key={`${book.id}${book.title}`}
+                    authenticated={authenticated}
+                    {...book}
+                  />
+                ))}
+              </BookGrid>
+            ) : (
+              <div>
+                <Body tag="h6">Nothing to show here...yet :(</Body>
+              </div>
+            )}
+          </Fragment>
+        )}
+        <Artifika>Books</Artifika>
+        <BookGrid>
+          {books.map((book) => (
+            <BookCard
+              key={`${book.id}${book.title}`}
+              authenticated={authenticated}
+              {...book}
+            />
+          ))}
+        </BookGrid>
+      </Fragment>
     )
   }
 }
