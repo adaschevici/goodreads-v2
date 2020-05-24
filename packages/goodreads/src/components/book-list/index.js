@@ -21,6 +21,7 @@ class BookList extends Component {
       dispatch(fetchBooksInProgress(username))
     }
   }
+
   componentDidMount = () => {
     const { dispatch, authenticated, username } = this.props
     dispatch(fetchBooks())

@@ -93,41 +93,41 @@ export default function books(state = initialState, action) {
     case FETCH_BOOKS_IN_PROGRESS_REQUEST: {
       return {
         ...state,
-        isLoading: true,
+        isLoadingBIP: true,
       }
     }
     case FETCH_BOOKS_IN_PROGRESS_SUCCEEDED: {
       return {
         ...state,
         booksInProgress: action.payload.booksInProgress,
-        isLoading: false,
+        isLoadingBIP: false,
       }
     }
     case FETCH_BOOKS_IN_PROGRESS_FAILED: {
       return {
         ...state,
-        isLoading: false,
-        error: action.payload.error,
+        isLoadingBIP: false,
+        errorBIP: action.payload.error,
       }
     }
     case FETCH_BOOKS_REQUEST: {
       return {
         ...state,
-        isLoading: true,
+        isLoadingBooks: true,
       }
     }
     case FETCH_BOOKS_SUCCEEDED: {
       return {
         ...state,
-        booksInProgress: action.payload.booksInProgress,
+        books: action.payload.books,
         isLoading: false,
       }
     }
     case FETCH_BOOKS_FAILED: {
       return {
         ...state,
-        isLoading: false,
-        error: action.payload.error,
+        isLoadingBooks: false,
+        errorBooks: action.payload.error,
       }
     }
     default: {
