@@ -43,6 +43,7 @@
     "cypress": "^4.6.0",
     "cypress-plugin-snapshots": "^1.4.3",
     "faker": "^4.1.0",
+    "netlify-cli": "^2.51.0",
     "redux-devtools-extension": "^2.13.8"
   }
 }

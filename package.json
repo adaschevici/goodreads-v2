@@ -22,6 +22,7 @@
   },
   "scripts": {
     "build:components": "lerna exec npm run build --scope=@goodreads-v2/component-library",
+    "build:goodreads": "lerna exec npm run build --scope=@goodreads-v2/goodreads",
     "storybook": "lerna exec npm run storybook --scope=@goodreads-v2/component-library",
     "build-storybook": "lerna exec npm run build-storybook --scope=@goodreads-v2/component-library",
     "start:app": "lerna exec npm start --scope=@goodreads-v2/goodreads",
