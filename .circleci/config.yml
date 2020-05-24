@@ -46,6 +46,19 @@ jobs:
                 key: goodreads-v2-{{ .Revision }}
                 paths:
                   - packages/goodreads/build
+  deploy-goodreads:
+    executor:
+      name: node/default
+    steps:
+      - checkout
+      - node/with-cache:
+          steps:
+            - restore_cache:
+                keys:
+                  - goodreads-v2-{{ .Revision }}
+            - run:
+                name: Netlify Deploy
+                command: npx netlify deploy --site $NETLIFY_SITE_ID --auth $NETLIFY_ACCESS_TOKEN --prod --dir=packages/goodreads/build
 workflows:
     build-components-and-app:
       jobs:
@@ -56,3 +69,6 @@ workflows:
         - build-goodreads:
             requires:
               - build-and-test-components
+        - deploy-goodreads:
+            requires:
+              - build-goodreads

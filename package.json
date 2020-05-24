@@ -5,6 +5,7 @@
   "dependencies": {
     "@rebass/forms": "^4.0.6",
     "@rebass/layout": "^4.0.6",
+    "netlify-cli": "^2.51.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.1.2",
