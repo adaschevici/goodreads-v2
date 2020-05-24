@@ -10,6 +10,11 @@ export const FETCH_RATINGS_REQUEST = 'FETCH_RATINGS_REQUEST'
 export const FETCH_RATINGS_SUCCEEDED = 'FETCH_RATINGS_SUCCEEDED'
 export const FETCH_RATINGS_FAILED = 'FETCH_RATINGS_FAILED'
 
+export const FETCH_BOOKS_IN_PROGRESS_REQUEST = 'FETCH_BOOKS_IN_PROGRESS_REQUEST'
+export const FETCH_BOOKS_IN_PROGRESS_SUCCEEDED =
+  'FETCH_BOOKS_IN_PROGRESS_SUCCEEDED'
+export const FETCH_BOOKS_IN_PROGRESS_FAILED = 'FETCH_BOOKS_IN_PROGRESS_FAILED'
+
 export const fetchMeta = () => ({
   type: FETCH_META_REQUEST,
 })
@@ -20,4 +25,11 @@ export const fetchImages = () => ({
 
 export const fetchRatings = () => ({
   type: FETCH_RATINGS_REQUEST,
+})
+
+export const fetchBooksInProgress = (username) => ({
+  type: FETCH_BOOKS_IN_PROGRESS_REQUEST,
+  payload: {
+    username,
+  },
 })
